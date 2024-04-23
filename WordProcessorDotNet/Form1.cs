@@ -426,7 +426,7 @@ namespace WordProcessor
         }
         private void ChangeSaveTextColor(Color color)
         {
-            //modified_label2.ForeColor = color;
+            modified_label2.ForeColor = color;
             SaveSaveTxtTextColor();
         }
         private void SaveSaveTxtTextColor()
@@ -2124,7 +2124,7 @@ namespace WordProcessor
         }
 
 
-        private bool blockLeave = false;
+        //private bool blockLeave = false;
         private void fileTextOutput_KeyDown(object sender, KeyEventArgs e)
         {
             // Check if the user pressed the "Control" and "S" keys together
@@ -2147,7 +2147,7 @@ namespace WordProcessor
 
             if (e.KeyCode == Keys.Tab)
             {
-                blockLeave = true;
+                //blockLeave = true;
             }
         }
 

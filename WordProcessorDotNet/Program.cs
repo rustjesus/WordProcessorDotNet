@@ -28,7 +28,6 @@ namespace WordProcessor
 
         }
         private Button myButton;
-        private Timer timer;
         private Random random;
         private TextBox inputBox;
         private TextBox inputBoxIndentLineCount;

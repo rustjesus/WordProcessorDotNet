@@ -642,7 +642,6 @@ namespace WordProcessor
 
         private System.Windows.Forms.Label outputLabel;
         private System.Windows.Forms.Button ReadStringBtn;
-        private System.Windows.Forms.Button ReadString;
         private System.Windows.Forms.TextBox inputBox;
         private System.Windows.Forms.ToolStripDropDownButton filetoolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem1;
