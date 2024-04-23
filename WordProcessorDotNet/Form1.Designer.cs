@@ -73,6 +73,8 @@ namespace WordProcessor
             this.addNumberToEveryUsedLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.View_toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toggleStatusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripHelpDropDown = new System.Windows.Forms.ToolStripDropDownButton();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modified_label2 = new System.Windows.Forms.Label();
             this.undo_button1 = new System.Windows.Forms.Button();
             this.redo_button1 = new System.Windows.Forms.Button();
@@ -86,8 +88,6 @@ namespace WordProcessor
             this.label2 = new System.Windows.Forms.Label();
             this.findNext_button1 = new System.Windows.Forms.Button();
             this.findLast_button1 = new System.Windows.Forms.Button();
-            this.toolStripHelpDropDown = new System.Windows.Forms.ToolStripDropDownButton();
-            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,7 +112,7 @@ namespace WordProcessor
             // 
             // inputBox
             // 
-            this.inputBox.Location = new System.Drawing.Point(233, 27);
+            this.inputBox.Location = new System.Drawing.Point(239, 26);
             this.inputBox.Name = "inputBox";
             this.inputBox.Size = new System.Drawing.Size(65, 20);
             this.inputBox.TabIndex = 3;
@@ -455,6 +455,24 @@ namespace WordProcessor
             this.toggleStatusBarToolStripMenuItem.Text = "Toggle Status Bar";
             this.toggleStatusBarToolStripMenuItem.Click += new System.EventHandler(this.toggleStatusBarToolStripMenuItem_Click);
             // 
+            // toolStripHelpDropDown
+            // 
+            this.toolStripHelpDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripHelpDropDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.checkForUpdatesToolStripMenuItem});
+            this.toolStripHelpDropDown.Image = ((System.Drawing.Image)(resources.GetObject("toolStripHelpDropDown.Image")));
+            this.toolStripHelpDropDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripHelpDropDown.Name = "toolStripHelpDropDown";
+            this.toolStripHelpDropDown.Size = new System.Drawing.Size(45, 22);
+            this.toolStripHelpDropDown.Text = "Help";
+            // 
+            // checkForUpdatesToolStripMenuItem
+            // 
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check For Updates";
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
+            // 
             // modified_label2
             // 
             this.modified_label2.AutoSize = true;
@@ -466,7 +484,7 @@ namespace WordProcessor
             // 
             // undo_button1
             // 
-            this.undo_button1.Location = new System.Drawing.Point(635, 27);
+            this.undo_button1.Location = new System.Drawing.Point(648, 27);
             this.undo_button1.Name = "undo_button1";
             this.undo_button1.Size = new System.Drawing.Size(64, 20);
             this.undo_button1.TabIndex = 12;
@@ -476,7 +494,7 @@ namespace WordProcessor
             // 
             // redo_button1
             // 
-            this.redo_button1.Location = new System.Drawing.Point(566, 27);
+            this.redo_button1.Location = new System.Drawing.Point(578, 27);
             this.redo_button1.Name = "redo_button1";
             this.redo_button1.Size = new System.Drawing.Size(64, 20);
             this.redo_button1.TabIndex = 13;
@@ -549,7 +567,7 @@ namespace WordProcessor
             // 
             // find_textBox1
             // 
-            this.find_textBox1.Location = new System.Drawing.Point(336, 27);
+            this.find_textBox1.Location = new System.Drawing.Point(346, 27);
             this.find_textBox1.Name = "find_textBox1";
             this.find_textBox1.Size = new System.Drawing.Size(86, 20);
             this.find_textBox1.TabIndex = 19;
@@ -559,7 +577,7 @@ namespace WordProcessor
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(303, 29);
+            this.label2.Location = new System.Drawing.Point(310, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 20;
@@ -567,7 +585,7 @@ namespace WordProcessor
             // 
             // findNext_button1
             // 
-            this.findNext_button1.Location = new System.Drawing.Point(427, 27);
+            this.findNext_button1.Location = new System.Drawing.Point(438, 27);
             this.findNext_button1.Name = "findNext_button1";
             this.findNext_button1.Size = new System.Drawing.Size(64, 20);
             this.findNext_button1.TabIndex = 21;
@@ -577,31 +595,13 @@ namespace WordProcessor
             // 
             // findLast_button1
             // 
-            this.findLast_button1.Location = new System.Drawing.Point(496, 27);
+            this.findLast_button1.Location = new System.Drawing.Point(508, 27);
             this.findLast_button1.Name = "findLast_button1";
             this.findLast_button1.Size = new System.Drawing.Size(64, 20);
             this.findLast_button1.TabIndex = 22;
             this.findLast_button1.Text = "Find Last";
             this.findLast_button1.UseVisualStyleBackColor = true;
             this.findLast_button1.Click += new System.EventHandler(this.findLast_button1_Click);
-            // 
-            // toolStripHelpDropDown
-            // 
-            this.toolStripHelpDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripHelpDropDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.checkForUpdatesToolStripMenuItem});
-            this.toolStripHelpDropDown.Image = ((System.Drawing.Image)(resources.GetObject("toolStripHelpDropDown.Image")));
-            this.toolStripHelpDropDown.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripHelpDropDown.Name = "toolStripHelpDropDown";
-            this.toolStripHelpDropDown.Size = new System.Drawing.Size(45, 22);
-            this.toolStripHelpDropDown.Text = "Help";
-            // 
-            // checkForUpdatesToolStripMenuItem
-            // 
-            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.checkForUpdatesToolStripMenuItem.Text = "Check For Updates";
-            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // Form1
             // 
