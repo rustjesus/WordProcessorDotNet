@@ -14,6 +14,7 @@ using Microsoft.VisualBasic;
 using System.Text.RegularExpressions;
 using System.Drawing.Printing;
 using System.Xml;
+using WordProcessorDotNet;
 
 namespace WordProcessor
 {
@@ -39,11 +40,14 @@ namespace WordProcessor
         private bool isLoading = true;
         private int statusBarValue = 0;
         private bool statusBarToggle = true;
+        Bolding bolding;
+        Settings settings;
         private void Form1_Load(object sender, EventArgs e)
         {
             //loading start check
             isLoading = true;
-
+            bolding = new Bolding();
+            settings = new Settings();
             LoadUnsaveTextColor();
             LoadSaveTxtTextColor();
             SavedText();
@@ -81,14 +85,14 @@ namespace WordProcessor
             fileTextOutput.Font = new Font(fileTextOutput.Font.FontFamily, 12, fileTextOutput.Font.Style);//set font size
 
             //load and set bold mode
-            LoadBoldModeValue();
-            if (boldMode == 1)
+            bolding.LoadBoldModeValue();
+            if (settings.boldMode == 1)
             {
-                MakeTextBold(fileTextOutput);
+                bolding.MakeTextBold(fileTextOutput);
             }
-            if (boldMode == 0)
+            if (settings.boldMode == 0)
             {
-                MakeTextNotBold(fileTextOutput);
+                bolding.MakeTextNotBold(fileTextOutput);
             }
 
             LoadWordWrapValue();
@@ -826,26 +830,7 @@ namespace WordProcessor
             // Display the file name in the output label
             outputLabel.Text = $"{Path.GetFullPath(filePath)}";
         }
-        private void MakeTextBold(RichTextBox textBox)
-        {
-            if (textBox.SelectionFont != null)
-            {
-                textBox.SelectionFont = new Font(textBox.SelectionFont.FontFamily, fontSize, FontStyle.Bold);
-                SaveBoldModeValue(1);
-            }
-
-        }
-        private void MakeTextNotBold(RichTextBox textBox)
-        {
-            if (textBox.SelectionFont != null)
-            {
-                Font currentFont = textBox.SelectionFont;
-                FontStyle newStyle = currentFont.Style & ~FontStyle.Bold;
-                textBox.SelectionFont = new Font(currentFont.FontFamily, currentFont.Size, newStyle);
-                SaveBoldModeValue(0);
-            }
-        }
-        private int fontSize;
+      
         private void ChangeFontSize(RichTextBox richTextBox)
         {
             // create a new form with a label and text box for the user input
@@ -879,12 +864,12 @@ namespace WordProcessor
 
             // display the form as a dialog box
             DialogResult result = form.ShowDialog();
-            if (result == DialogResult.OK && int.TryParse(textBox.Text, out fontSize))
+            if (result == DialogResult.OK && int.TryParse(textBox.Text, out settings.fontSize))
             {
                 FontStyle previousFontStyle = richTextBox.SelectionFont.Style;
 
                 // set the new font size
-                richTextBox.SelectionFont = new Font(richTextBox.SelectionFont.FontFamily, fontSize, previousFontStyle);
+                richTextBox.SelectionFont = new Font(richTextBox.SelectionFont.FontFamily, settings.fontSize, previousFontStyle);
                 //SaveFontSizeValue(fontSize);
                 // restore the selection and previous font style
                 //richTextBox.Select(selectionStart, selectionLength);
@@ -1028,34 +1013,7 @@ namespace WordProcessor
                 this.CancelButton = cancelButton;
             }
         }
-        private int boldMode;
-        private void SaveBoldModeValue(int value)
-        {
-            var data = new { Value = value };
 
-            string jsonFilePath = Path.Combine(Application.StartupPath, "boldModeValue.json");
-            var json = JsonConvert.SerializeObject(data);
-            File.WriteAllText(jsonFilePath, json);
-        }
-
-        private int LoadBoldModeValue()
-        {
-            string jsonFilePath = Path.Combine(Application.StartupPath, "boldModeValue.json");
-            if (File.Exists(jsonFilePath))
-            {
-                var json = File.ReadAllText(jsonFilePath);
-                dynamic data = JsonConvert.DeserializeObject(json);
-
-                if (data != null)
-                {
-                    int value = Convert.ToInt32(data.Value);
-                    boldMode = value;
-                    return value;
-                }
-            }
-
-            return 0;
-        }
         private int wordWrapValue = 0;
 
         private void SaveWordWrapValue()
@@ -2104,13 +2062,13 @@ namespace WordProcessor
 
         private void boldTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MakeTextBold(fileTextOutput);
+            bolding.MakeTextBold(fileTextOutput);
         }
 
         //these two are swapped!
         private void setFontSizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MakeTextNotBold(fileTextOutput);
+            bolding.MakeTextNotBold(fileTextOutput);
         }
         //these two are swapped!
         private void unBoldTextToolStripMenuItem_Click(object sender, EventArgs e)
