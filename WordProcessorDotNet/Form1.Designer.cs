@@ -520,7 +520,7 @@ namespace WordProcessor
             this.ver_label.Name = "ver_label";
             this.ver_label.Size = new System.Drawing.Size(37, 13);
             this.ver_label.TabIndex = 15;
-            this.ver_label.Text = "v0.9.8";
+            this.ver_label.Text = "v0.9.9";
             // 
             // wordwrap_label2
             // 

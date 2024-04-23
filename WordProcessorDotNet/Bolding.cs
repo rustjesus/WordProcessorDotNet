@@ -15,11 +15,9 @@ namespace WordProcessorDotNet
         //TEXT BOLDING**********************
         public void MakeTextBold(RichTextBox textBox)
         {
-            Settings settings = new Settings();
             if (textBox.SelectionFont != null)
             {
-                textBox.SelectionFont = new Font(textBox.SelectionFont.FontFamily, settings.fontSize, FontStyle.Bold);
-                SaveBoldModeValue(1);
+                textBox.SelectionFont = new Font(textBox.SelectionFont.FontFamily, textBox.Font.Size, FontStyle.Bold);
             }
 
         }
@@ -30,7 +28,6 @@ namespace WordProcessorDotNet
                 Font currentFont = textBox.SelectionFont;
                 FontStyle newStyle = currentFont.Style & ~FontStyle.Bold;
                 textBox.SelectionFont = new Font(currentFont.FontFamily, currentFont.Size, newStyle);
-                SaveBoldModeValue(0);
             }
         }
         public void SaveBoldModeValue(int value)
@@ -42,7 +39,7 @@ namespace WordProcessorDotNet
             File.WriteAllText(jsonFilePath, json);
         }
 
-        private int LoadBoldModeValue()
+        public int LoadBoldModeValue()
         {
             Settings settings = new Settings();
             string jsonFilePath = Path.Combine(Application.StartupPath, "boldModeValue.json");

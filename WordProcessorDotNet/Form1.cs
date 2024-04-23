@@ -2062,12 +2062,14 @@ namespace WordProcessor
 
         private void boldTextToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bolding.SaveBoldModeValue(1);
             bolding.MakeTextBold(fileTextOutput);
         }
 
         //these two are swapped!
         private void setFontSizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bolding.SaveBoldModeValue(0);
             bolding.MakeTextNotBold(fileTextOutput);
         }
         //these two are swapped!
